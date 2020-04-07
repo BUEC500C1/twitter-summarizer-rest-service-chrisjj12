@@ -77,6 +77,7 @@ def startwebApp(makdevid):
 if __name__ == "__main__":
     socketio.run(app)
 
+return 0
 
 
 
