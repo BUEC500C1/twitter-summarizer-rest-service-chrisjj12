@@ -8,12 +8,12 @@ import time
 from flask import Flask, render_template, request, send_file
 
 
-app = Flask(__name__)
+app = Flask(__name__,template_folder = "Templates")
 file_name = "video.avi"
 @app.route('/') #basic beginning of the app, the main page
 def home():
 
-    return render_template('./Templates/main.html')
+    return render_template('main.html')
     
 @app.route('/', methods=["POST"]) #getting info from the front end
 def getvideo():
