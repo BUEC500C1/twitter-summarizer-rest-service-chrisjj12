@@ -60,7 +60,7 @@ def choose_username(username):
 if __name__ == "__main__":
     os.system("rm *video.avi")
     os.system("rm *.png")
-    app.run()
+    app.run(host=‘0.0.0.0’, port =8080)
 
 
 
