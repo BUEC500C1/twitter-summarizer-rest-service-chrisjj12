@@ -19,13 +19,13 @@ def home():
     
 @app.route('/', methods=["POST"]) #getting info from the front end
 def getvideo():
-    try:
+    try: #error checking user id
         username = request.form["userid"]
         choose_username(username)
         return send_file(file_name, mimetype = "avi", attachment_filename = file_name, as_attachment=True)
     except:
         error = 'Invalid credentials'
-        
+
 def choose_username(username):
     auth = tweepy.OAuthHandler(keys.consumer_key, keys.consumer_secret)
     auth.set_access_token(keys.access_token, keys.access_secret)
@@ -38,12 +38,11 @@ def choose_username(username):
     texts = []
 
     for status in public_tweets:
-        #print(status.text)
         texts.append(status.text)
         media = status.entities.get('media', [])
 
         image_list.append((str(status.text), 1))
-        try:
+        try: #error checking media
             if(len(media) > 0):
                 url = str(media[0]['media_url'])
                 image_list.append((url, 0))
